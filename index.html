@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>APEX GP CLUB — Regístrate y acelera</title>
+<title>NITRO RIDERS MOTOR CLUB — Regístrate</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&family=Metal+Mania&family=New+Rocker&display=swap" rel="stylesheet">
 <style>
 :root{--negro:#07070A;--fuego:#FF4D00;--amarillo:#FFC300;--rojo:#E10600;--blanco:#F5F5F5;
   --grad:linear-gradient(90deg,#E10600,#FF4D00,#FFC300)}
@@ -15,6 +15,17 @@ html{scroll-behavior:smooth}
 body{background:var(--negro);color:var(--blanco);font-family:Inter,system-ui,sans-serif;overflow-x:hidden}
 body.lock{overflow:hidden}
 .anton{font-family:Anton,Impact,sans-serif;letter-spacing:1px;text-transform:uppercase}
+.metal{font-family:"Metal Mania",Anton,Impact,serif;text-transform:none;letter-spacing:2px}
+.rocker{font-family:"New Rocker",serif;letter-spacing:6px}
+.firetxt{background:linear-gradient(180deg,#fff6c8 0%,#FFC300 30%,#FF4D00 62%,#9e0000 100%);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 14px rgba(255,77,0,.7)) drop-shadow(0 3px 0 #2a0000)}
+/* textura grunge */
+body::after{content:"";position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.12;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#bolt{position:fixed;inset:0;z-index:45;pointer-events:none}
+.logo-metal{font-size:clamp(2.6rem,7vw,5.2rem);line-height:1;opacity:0}
+.club{display:block;font-size:clamp(.8rem,1.6vw,1.05rem);color:#ddd;margin:6px 0 4px;opacity:0}
+.club::before,.club::after{content:"";display:inline-block;width:46px;height:2px;vertical-align:middle;margin:0 12px;background:linear-gradient(90deg,transparent,#FF4D00)}
+.club::after{background:linear-gradient(90deg,#FF4D00,transparent)}
 
 /* ================= INTRO ================= */
 #intro{position:fixed;inset:0;z-index:1000;display:grid;place-items:center}
@@ -25,12 +36,10 @@ body.lock{overflow:hidden}
 #intro.open .bot{transform:translateY(100%)}
 #intro.open .gauge-wrap{opacity:0;transform:scale(2.5)}
 .gauge-wrap{position:relative;z-index:2;text-align:center;transition:.5s}
-.lights{display:flex;gap:clamp(8px,2vw,18px);justify-content:center;margin-bottom:26px}
-.pod{background:#111;border:2px solid #222;border-radius:14px;padding:10px;display:flex;flex-direction:column;gap:10px}
-.pod i{width:clamp(34px,8vw,64px);height:clamp(34px,8vw,64px);border-radius:50%;background:#2a0000;transition:background .08s,box-shadow .08s}
-.pod.on i{background:#ff1a1a;box-shadow:0 0 30px #ff1a1a,0 0 60px rgba(255,26,26,.6)}
-.kmh{font-size:clamp(2.6rem,9vw,5rem);line-height:1}
-#rainlight{animation:rain .5s steps(2) infinite}@keyframes rain{50%{opacity:.15}}
+.gauge-wrap svg{width:min(320px,70vw)}
+#needle{transform-origin:150px 150px;transform:rotate(-120deg)}
+.kmh{font-size:clamp(3rem,10vw,5rem);line-height:1;margin-top:-60px}
+.kmh small{font-size:.35em;color:var(--fuego)}
 .intro-txt{margin-top:14px;font-size:1rem;letter-spacing:6px;color:#999;animation:blink .5s steps(2) infinite}
 @keyframes blink{50%{opacity:.2}}
 #flash{position:fixed;inset:0;background:#fff;z-index:1001;opacity:0;pointer-events:none}
@@ -68,7 +77,7 @@ body.lock{overflow:hidden}
 /* Texto */
 .head{position:absolute;top:7%;left:0;right:0;text-align:center;z-index:5;padding:0 16px}
 .brand{font-size:1rem;letter-spacing:10px;color:var(--fuego);opacity:0}
-.title{font-size:clamp(3rem,11vw,9rem);line-height:.9;margin:8px 0 6px;display:flex;justify-content:center;flex-wrap:wrap;gap:0 .25em}
+.title{font-size:clamp(3rem,10vw,8rem);line-height:.9;margin:8px 0 6px;display:flex;justify-content:center;flex-wrap:wrap;gap:0 .25em}
 .title .w{display:inline-flex}
 .title .l{display:inline-block;opacity:0;transform:translateY(-120px) scale(2) rotate(-12deg)}
 .title .l.in{animation:slam .45s cubic-bezier(.2,1.8,.4,1) forwards}
@@ -97,7 +106,7 @@ body.lock{overflow:hidden}
 
 /* Moto */
 .moto-lane{position:absolute;left:0;right:0;bottom:17%;height:0;z-index:4}
-#moto{position:absolute;bottom:0;left:50%;width:min(640px,92vw);margin-left:calc(min(640px,92vw)/-2);transform:translateX(-140vw);transform-origin:22% 95%}
+#moto{position:absolute;bottom:0;left:50%;width:min(520px,82vw);margin-left:calc(min(520px,82vw)/-2);transform:translateX(-140vw);transform-origin:22% 95%}
 #moto svg{width:100%;display:block;overflow:visible;filter:drop-shadow(0 25px 18px rgba(0,0,0,.7))}
 #motoBody.idle{animation:idle .09s linear infinite alternate}
 @keyframes idle{to{transform:translateY(1.5px)}}
@@ -112,7 +121,7 @@ body.lock{overflow:hidden}
 #win{position:absolute;inset:0;z-index:8;display:grid;place-items:center;text-align:center;pointer-events:none;opacity:0;padding:20px}
 #win.show{opacity:1;pointer-events:auto}
 #win h2{font-size:clamp(3.5rem,13vw,10rem);line-height:.9;transform:scale(4);opacity:0}
-#win.show h2{animation:winIn .6s cubic-bezier(.2,1.6,.4,1) forwards,fireText 1.5s linear infinite}
+#win.show h2{animation:winIn .6s cubic-bezier(.2,1.6,.4,1) forwards}
 @keyframes winIn{to{transform:none;opacity:1}}
 #win p{font-size:1.2rem;margin:16px 0 22px;color:#eee;opacity:0;transition:opacity .5s .6s}
 #win.show p{opacity:1}
@@ -161,7 +170,7 @@ footer{text-align:center;padding:40px;color:#666;font-size:.85rem}
   .sub{margin:0}
   .form{margin:26px 0 0}
   .err{text-align:left}
-  #moto{left:74%;width:min(640px,46vw);margin-left:calc(min(640px,46vw)/-2)}
+  #moto{left:76%;width:min(560px,42vw);margin-left:calc(min(560px,42vw)/-2)}
 }
 @media(max-width:640px){
   .form{flex-direction:column}
@@ -176,14 +185,18 @@ footer{text-align:center;padding:40px;color:#666;font-size:.85rem}
 <div id="intro">
   <div class="half top"></div><div class="half bot"></div>
   <div class="gauge-wrap">
-    <div class="lights" id="lights">
-      <div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div><div class="pod"><i></i><i></i></div>
-    </div>
-    <div class="kmh anton" id="lo">PREPARADOS</div>
-    <div class="intro-txt anton">CALENTANDO MOTORES</div>
+    <svg viewBox="0 0 300 220">
+      <defs><linearGradient id="gArc" x1="0" x2="1"><stop offset="0" stop-color="#FFC300"/><stop offset=".6" stop-color="#FF4D00"/><stop offset="1" stop-color="#E10600"/></linearGradient></defs>
+      <path d="M40 190 A120 120 0 1 1 260 190" fill="none" stroke="#222" stroke-width="14" stroke-linecap="round"/>
+      <path id="arc" d="M40 190 A120 120 0 1 1 260 190" fill="none" stroke="url(#gArc)" stroke-width="14" stroke-linecap="round" stroke-dasharray="560" stroke-dashoffset="560"/>
+      <g id="needle"><path d="M147 150 L150 48 L153 150 Z" fill="#fff"/><circle cx="150" cy="150" r="10" fill="#FF4D00"/></g>
+    </svg>
+    <div class="kmh anton"><span id="kmh">0</span><small> KM/H</small></div>
+    <div class="intro-txt anton">ENCENDIENDO MOTOR</div>
   </div>
 </div>
 <div id="flash"></div>
+<canvas id="bolt"></canvas>
 <canvas id="fx"></canvas>
 
 <!-- ========== HERO ========== -->
@@ -194,82 +207,78 @@ footer{text-align:center;padding:40px;color:#666;font-size:.85rem}
   <div class="speedlines" id="speedlines"></div>
 
   <div class="head" id="head">
-    <div class="brand anton" id="brand">APEX GP CLUB</div>
+    <div class="metal firetxt logo-metal" id="brand">Nitro Riders</div><span class="rocker club" id="clubtag">MOTOR CLUB</span>
     <h1 class="title anton glitch" id="title" aria-label="Regístrate aquí"></h1>
-    <p class="sub" id="sub">Únete al club, gana tu acceso al día de pista y acelera a fondo.</p>
+    <p class="sub" id="sub">Únete a la manada. Recibe tu invitación a la rodada de lanzamiento y siente arder el asfalto.</p>
     <form class="form" id="form" novalidate>
       <input type="email" id="email" name="EMAIL" placeholder="TU CORREO AQUÍ" autocomplete="email" required>
       <input class="hp" type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off">
       <input type="hidden" name="locale" value="es">
-      <button class="btn" id="btn" type="submit">ARRANCAR</button>
+      <button class="btn" id="btn" type="submit">ACELERAR</button>
     </form>
     <div class="err" id="err"></div>
   </div>
 
   <div class="moto-lane">
     <div id="moto">
-      <svg id="motoSvg" viewBox="0 0 540 170" aria-hidden="true">
+      <svg id="motoSvg" viewBox="0 0 420 240" aria-hidden="true">
         <defs>
-          <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF4D00"/><stop offset=".5" stop-color="#E10600"/><stop offset="1" stop-color="#7a0000"/></linearGradient>
-          <linearGradient id="dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a2a2a"/><stop offset="1" stop-color="#0b0b0b"/></linearGradient>
+          <linearGradient id="body" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#FF4D00"/><stop offset=".55" stop-color="#E10600"/><stop offset="1" stop-color="#7a0000"/></linearGradient>
+          <linearGradient id="chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#eee"/><stop offset=".5" stop-color="#777"/><stop offset="1" stop-color="#ccc"/></linearGradient>
+          <radialGradient id="beam" cx="0" cy=".5" r="1"><stop offset="0" stop-color="#fff8c0" stop-opacity=".9"/><stop offset="1" stop-color="#fff8c0" stop-opacity="0"/></radialGradient>
         </defs>
         <g id="motoBody">
-          <!-- alerón trasero -->
-          <rect x="40" y="56" width="14" height="44" fill="#3a3a3a"/>
-          <rect x="20" y="40" width="66" height="13" rx="2" fill="url(#body)"/>
-          <rect x="22" y="55" width="58" height="6" rx="2" fill="#2a2a2a"/>
-          <rect x="18" y="36" width="5" height="28" rx="1" fill="#555"/>
-          <rect id="rainlight" x="16" y="78" width="10" height="8" rx="2" fill="#ff1a1a"/>
-          <!-- piso -->
-          <path d="M60 118 L480 118 L470 126 L70 126 Z" fill="#0d0d0d"/>
-          <!-- cuerpo -->
-          <path d="M48 96 L70 70 L160 64 L200 52 L262 50 L330 66 L470 92 L512 102 L512 110 L470 114 L60 116 Z" fill="url(#body)"/>
-          <!-- pontón -->
-          <path d="M150 80 L300 76 L330 96 L310 112 L150 112 Z" fill="#b30000"/>
-          <path d="M160 92 L320 88 L322 94 L160 98 Z" fill="#FFC300"/>
-          <!-- toma de aire -->
-          <path d="M168 62 L196 26 L226 26 L238 54 Z" fill="url(#dark)"/>
-          <ellipse cx="212" cy="32" rx="10" ry="5" fill="#000"/>
-          <!-- halo y piloto -->
-          <circle cx="268" cy="48" r="14" fill="#111"/>
-          <path d="M268 38 Q284 38 282 50 L266 50 Z" fill="#FF4D00"/>
-          <path d="M252 44 Q262 34 278 36" stroke="#FFC300" stroke-width="3" fill="none"/>
-          <path d="M236 58 Q262 22 306 52" stroke="#222" stroke-width="6" fill="none" stroke-linecap="round"/>
-          <line x1="306" y1="52" x2="300" y2="66" stroke="#222" stroke-width="5"/>
-          <!-- número -->
-          <text x="372" y="96" font-family="Anton,Impact,sans-serif" font-size="26" fill="#fff" transform="skewX(-12)">07</text>
-          <!-- nariz y alerón delantero -->
-          <path d="M440 104 L530 110 L530 118 L440 118 Z" fill="#111"/>
-          <path d="M452 120 L534 120 L534 128 L452 128 Z" fill="url(#body)"/>
-          <rect x="524" y="104" width="8" height="26" rx="2" fill="#151515"/>
-          <!-- suspensión -->
-          <g stroke="#333" stroke-width="3"><line x1="120" y1="122" x2="170" y2="96"/><line x1="410" y1="124" x2="370" y2="98"/><line x1="410" y1="124" x2="380" y2="110"/></g>
+          <!-- luz del faro -->
+          <path id="headlight" d="M338 92 L520 40 L520 170 Z" fill="url(#beam)" opacity=".8"/>
+          <!-- basculante y horquilla -->
+          <line x1="95" y1="185" x2="200" y2="160" stroke="#2a2a2a" stroke-width="12" stroke-linecap="round"/>
+          <line x1="325" y1="185" x2="296" y2="92" stroke="url(#chrome)" stroke-width="9" stroke-linecap="round"/>
+          <!-- motor -->
+          <rect x="168" y="128" width="78" height="44" rx="8" fill="#1d1d1d" stroke="#333" stroke-width="2"/>
+          <g stroke="#444" stroke-width="3"><line x1="178" y1="136" x2="236" y2="136"/><line x1="178" y1="146" x2="236" y2="146"/><line x1="178" y1="156" x2="236" y2="156"/></g>
+          <!-- escape -->
+          <path d="M185 168 L72 160 L64 150 L70 146 L182 156 Z" fill="url(#chrome)"/>
+          <rect x="52" y="142" width="22" height="20" rx="4" fill="#555"/>
+          <!-- colín y asiento -->
+          <path d="M128 112 L58 92 L70 88 L140 100 Z" fill="url(#body)"/>
+          <path d="M122 110 L190 102 L186 114 L128 120 Z" fill="#0d0d0d"/>
+          <!-- carenado -->
+          <path d="M150 162 L132 118 L190 100 L262 96 L306 74 L342 92 L334 118 L292 128 L262 160 Z" fill="url(#body)"/>
+          <path d="M190 100 Q222 74 266 92 L262 104 L196 108 Z" fill="#b30000"/>
+          <path d="M160 140 L250 128 L246 136 L162 148 Z" fill="#FFC300"/>
+          <path d="M306 74 L322 50 L342 92 Z" fill="rgba(140,200,255,.55)" stroke="#9cf" stroke-width="1"/>
+          <path d="M334 88 L346 92 L340 100 L330 98 Z" fill="#fffbe0"/>
+          <!-- piloto -->
+          <path d="M150 104 Q170 80 205 72 L250 66 L262 84 L214 92 L180 110 Z" fill="#111"/>
+          <path d="M175 108 L222 118 L232 150 L220 152 L210 128 L170 118 Z" fill="#151515"/>
+          <path d="M240 70 L292 80 L290 88 L246 82 Z" fill="#151515"/>
+          <circle cx="258" cy="52" r="24" fill="#111"/>
+          <path d="M262 40 Q284 42 282 58 L262 58 Z" fill="#FF4D00"/>
+          <path d="M238 46 Q256 30 276 36" stroke="#FFC300" stroke-width="4" fill="none"/>
         </g>
         <!-- ruedas -->
         <g class="wheel" id="wr">
-          <circle cx="120" cy="124" r="40" fill="#0b0b0b"/>
-          <circle cx="120" cy="124" r="40" fill="none" stroke="#FFC300" stroke-width="3" stroke-dasharray="30 22"/>
-          <circle cx="120" cy="124" r="24" fill="#1c1c1c" stroke="#555" stroke-width="3"/>
-          <g stroke="#999" stroke-width="3"><line x1="120" y1="102" x2="120" y2="146"/><line x1="98" y1="124" x2="142" y2="124"/><line x1="104" y1="108" x2="136" y2="140"/><line x1="104" y1="140" x2="136" y2="108"/></g>
-          <circle cx="120" cy="124" r="6" fill="#E10600"/>
+          <circle cx="95" cy="185" r="46" fill="#0b0b0b" stroke="#1f1f1f" stroke-width="10"/>
+          <circle cx="95" cy="185" r="31" fill="none" stroke="#FF4D00" stroke-width="3"/>
+          <g stroke="#bbb" stroke-width="4"><line x1="95" y1="154" x2="95" y2="216"/><line x1="68" y1="170" x2="122" y2="200"/><line x1="68" y1="200" x2="122" y2="170"/></g>
+          <circle cx="95" cy="185" r="8" fill="#ddd"/>
         </g>
         <g class="wheel" id="wf">
-          <circle cx="410" cy="128" r="36" fill="#0b0b0b"/>
-          <circle cx="410" cy="128" r="36" fill="none" stroke="#FFC300" stroke-width="3" stroke-dasharray="28 20"/>
-          <circle cx="410" cy="128" r="21" fill="#1c1c1c" stroke="#555" stroke-width="3"/>
-          <g stroke="#999" stroke-width="3"><line x1="410" y1="109" x2="410" y2="147"/><line x1="391" y1="128" x2="429" y2="128"/><line x1="397" y1="115" x2="423" y2="141"/><line x1="397" y1="141" x2="423" y2="115"/></g>
-          <circle cx="410" cy="128" r="5" fill="#E10600"/>
+          <circle cx="325" cy="185" r="46" fill="#0b0b0b" stroke="#1f1f1f" stroke-width="10"/>
+          <circle cx="325" cy="185" r="31" fill="none" stroke="#FF4D00" stroke-width="3"/>
+          <g stroke="#bbb" stroke-width="4"><line x1="325" y1="154" x2="325" y2="216"/><line x1="298" y1="170" x2="352" y2="200"/><line x1="298" y1="200" x2="352" y2="170"/></g>
+          <circle cx="325" cy="185" r="8" fill="#ddd"/>
         </g>
-        <circle id="exhaustPt" cx="40" cy="92" r="1" fill="none"/>
-        <circle id="rearPt" cx="120" cy="164" r="1" fill="none"/>
+        <circle id="exhaustPt" cx="52" cy="152" r="1" fill="none"/>
+        <circle id="rearPt" cx="95" cy="231" r="1" fill="none"/>
       </svg>
     </div>
   </div>
 
   <div id="win">
     <div>
-      <h2 class="anton hot" style="background:var(--grad);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent">LUZ VERDE</h2>
-      <p>Te acabamos de enviar tu pase al día de pista. Revisa tu bandeja (y Promociones, por si acaso).</p>
+      <h2 class="metal firetxt">Estás dentro</h2>
+      <p>Bienvenido a la manada. Te acabamos de enviar tu invitación al correo. Revisa tu bandeja (y Promociones, por si acaso).</p>
       <button class="btn" onclick="resetHero()">OTRA VUELTA</button>
     </div>
   </div>
@@ -278,27 +287,27 @@ footer{text-align:center;padding:40px;color:#666;font-size:.85rem}
 
 <!-- ========== SECCIONES ========== -->
 <div class="marquee anton"><div class="track">
-  <span>A FONDO</span><span>LUZ VERDE</span><span>ÚNETE AL CLUB</span><span>DÍA DE PISTA</span><span>APEX GP</span>
-  <span>A FONDO</span><span>LUZ VERDE</span><span>ÚNETE AL CLUB</span><span>DÍA DE PISTA</span><span>APEX GP</span>
+  <span>RUGE EL MOTOR</span><span>SIN LÍMITES</span><span>ÚNETE A LA MANADA</span><span>RODADAS NOCTURNAS</span><span>NITRO RIDERS</span>
+  <span>RUGE EL MOTOR</span><span>SIN LÍMITES</span><span>ÚNETE A LA MANADA</span><span>RODADAS NOCTURNAS</span><span>NITRO RIDERS</span>
 </div></div>
 <div class="marquee rev anton"><div class="track">
-  <span>VUELTA RÁPIDA</span><span>REGÍSTRATE HOY</span><span>POLE POSITION</span>
-  <span>VUELTA RÁPIDA</span><span>REGÍSTRATE HOY</span><span>POLE POSITION</span>
+  <span>ARDE EL ASFALTO</span><span>REGÍSTRATE HOY</span><span>VUÉLVETE LEYENDA</span>
+  <span>ARDE EL ASFALTO</span><span>REGÍSTRATE HOY</span><span>VUÉLVETE LEYENDA</span>
 </div></div>
 
 <section>
-  <h2 class="sec-title anton reveal">QUÉ GANAS AL <span style="color:var(--fuego)">UNIRTE</span></h2>
+  <h2 class="sec-title anton reveal">QUÉ GANAS AL <span class="metal firetxt" style="font-size:1.15em">unirte</span></h2>
   <p class="sec-sub reveal">Todo llega directo a tu correo. Sin rodeos.</p>
   <div class="cards">
-    <div class="card reveal"><div class="n anton">01</div><h3 class="anton">Día de pista</h3><p>Pase exclusivo al primer día de pista del club, con horario, ubicación y vueltas de prueba.</p></div>
-    <div class="card reveal"><div class="n anton">02</div><h3 class="anton">Descuentos</h3><p>Beneficios en gorras, chaquetas y merch del club solo para miembros registrados.</p></div>
-    <div class="card reveal"><div class="n anton">03</div><h3 class="anton">Comunidad</h3><p>Conoce fans del automovilismo, comparte carreras y entérate primero de cada evento.</p></div>
+    <div class="card reveal"><div class="n anton">01</div><h3 class="anton">Rodada de lanzamiento</h3><p>Invitación exclusiva a la primera rodada del club, con ruta, hora y punto de encuentro.</p></div>
+    <div class="card reveal"><div class="n anton">02</div><h3 class="anton">20% en equipo</h3><p>Cascos, guantes y chaquetas de cuero con tu código de miembro.</p></div>
+    <div class="card reveal"><div class="n anton">03</div><h3 class="anton">La manada</h3><p>Riders de tu ciudad, rutas nocturnas y eventos antes que nadie.</p></div>
   </div>
 </section>
 
 <section>
   <div class="stats">
-    <div class="stat reveal"><div class="num anton" data-count="350">0</div><p>km/h de adrenalina</p></div>
+    <div class="stat reveal"><div class="num anton" data-count="300">0</div><p>km/h de adrenalina</p></div>
     <div class="stat reveal"><div class="num anton" data-count="24" data-suffix="/7">0</div><p>comunidad activa</p></div>
     <div class="stat reveal"><div class="num anton" data-count="1">0</div><p>clic para unirte</p></div>
   </div>
@@ -306,12 +315,12 @@ footer{text-align:center;padding:40px;color:#666;font-size:.85rem}
 
 <section>
   <div class="final reveal" id="final">
-    <h2 class="anton">¿LISTO PARA <span style="color:var(--amarillo)">LA LARGADA</span>?</h2>
+    <h2 class="anton">¿LISTO PARA <span class="metal firetxt" style="font-size:1.15em">rodar</span>?</h2>
     <p>El motor ya está encendido. Solo falta tu correo.</p>
     <a href="#hero" class="btn" style="display:inline-block;text-decoration:none">REGISTRARME</a>
   </div>
 </section>
-<footer>APEX GP CLUB · 2026 · Proyecto académico de email marketing</footer>
+<footer><span class="metal" style="font-size:1.4rem;color:#FF4D00">Ruge el motor. Arde el asfalto.</span><br>NITRO RIDERS MOTOR CLUB · 2026 · Proyecto académico de email marketing</footer>
 
 <script>
 /* =====================================================
@@ -335,7 +344,10 @@ function emit(x,y,type,n=1,power=1){for(let i=0;i<n;i++){
 function pt(id){const e=document.getElementById(id),m=e.getScreenCTM();const p=$("#motoSvg").createSVGPoint();p.x=+e.getAttribute("cx");p.y=+e.getAttribute("cy");return p.matrixTransform(m)}
 (function loop(){cx.clearRect(0,0,cv.width,cv.height);
   for(let i=parts.length-1;i>=0;i--){const p=parts[i];p.x+=p.vx;p.y+=p.vy;
-    if(p.t==="fire"){p.life-=.035;p.s*=.97;p.vy-=.08;cx.globalCompositeOperation="lighter";
+    if(p.t==="ember"){p.life-=.006;cx.globalCompositeOperation="lighter";p.x+=Math.sin(p.y/40)*.4;
+      const a=Math.min(p.life,1);const g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s*2);g.addColorStop(0,`rgba(255,210,120,${a})`);g.addColorStop(1,"rgba(255,60,0,0)");
+      cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,p.s*2,0,7);cx.fill()}
+    else if(p.t==="fire"){p.life-=.035;p.s*=.97;p.vy-=.08;cx.globalCompositeOperation="lighter";
       const g=cx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.s);const a=Math.max(p.life,0);
       g.addColorStop(0,`rgba(255,240,180,${a})`);g.addColorStop(.35,`rgba(255,150,0,${a*.85})`);g.addColorStop(1,"rgba(225,6,0,0)");
       cx.fillStyle=g;cx.beginPath();cx.arc(p.x,p.y,p.s,0,7);cx.fill()}
@@ -370,7 +382,7 @@ function setSpeed(mode){moto.classList.remove("fast","stopped");if(mode)moto.cla
   const slow=mode==="stopped";document.querySelectorAll(".city").forEach(c=>c.classList.toggle("slow",slow));$("#road").classList.toggle("slow",slow)}
 function shake(hard){hero.classList.remove("shake");void hero.offsetWidth;hero.classList.add("shake")}
 
-/* ---------- Animaciones del carro ---------- */
+/* ---------- Animaciones de la moto ---------- */
 const anim=(kf,o)=>moto.animate(kf,{fill:"forwards",...o}).finished;
 async function enter(){
   setSpeed("fast");sl.classList.add("on");moto.dataset.ready=1;exhaustMode="fire";
@@ -379,12 +391,12 @@ async function enter(){
   sl.classList.remove("on");setSpeed("stopped");exhaustMode="smoke";
   moto.style.transformOrigin="78% 95%";
   const r=pt("rearPt");emit(r.x,r.y,"smoke",25);emit(r.x,r.y,"spark",30);shake();
-  await anim([{transform:"translateX(8vw)"},{transform:"translateX(0) rotate(4deg)",offset:.5},{transform:"translateX(0) rotate(0)"}],{duration:700,easing:"ease-out"});
+  await anim([{transform:"translateX(8vw)"},{transform:"translateX(0) rotate(14deg)",offset:.5},{transform:"translateX(0) rotate(0)"}],{duration:700,easing:"ease-out"});
   moto.style.transformOrigin="22% 95%";body.classList.add("idle");
 }
 async function wheelie(){
   exhaustMode="fire";setSpeed("fast");
-  await anim([{transform:"rotate(0)"},{transform:"rotate(-9deg) translateX(40px)",offset:.4},{transform:"rotate(-7deg) translateX(-20px)",offset:.7},{transform:"rotate(0)"}],{duration:1600,easing:"ease-in-out"});
+  await anim([{transform:"rotate(0)"},{transform:"rotate(-24deg) translateX(30px)",offset:.4},{transform:"rotate(-20deg) translateX(-10px)",offset:.7},{transform:"rotate(0)"}],{duration:1600,easing:"ease-in-out"});
   const r=pt("rearPt");emit(r.x,r.y,"spark",15);shake();exhaustMode="smoke";setSpeed("stopped");
 }
 async function burnout(){
@@ -395,7 +407,7 @@ async function burnout(){
 }
 async function jump(){
   exhaustMode="fire";setSpeed("fast");
-  await anim([{transform:"translateY(0)"},{transform:"translateY(-90px) rotate(-6deg)",offset:.45},{transform:"translateY(-90px) rotate(3deg)",offset:.6},{transform:"translateY(0) rotate(0)"}],{duration:1100,easing:"ease-in-out"});
+  await anim([{transform:"translateY(0)"},{transform:"translateY(-110px) rotate(-12deg)",offset:.45},{transform:"translateY(-110px) rotate(6deg)",offset:.6},{transform:"translateY(0) rotate(0)"}],{duration:1100,easing:"ease-in-out"});
   const r=pt("rearPt");emit(r.x,r.y,"spark",40);shake();exhaustMode="smoke";setSpeed("stopped");
 }
 let tricksOn=true;
@@ -411,14 +423,26 @@ function engineSound(){try{const A=new (window.AudioContext||window.webkitAudioC
   g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.25,t+.1);g.gain.setValueAtTime(.25,t+1.9);g.gain.exponentialRampToValueAtTime(.001,t+2.8);
   o.connect(f);o2.connect(f);f.connect(g);g.connect(A.destination);o.start();o2.start();o.stop(t+2.9);o2.stop(t+2.9)}catch(e){}}
 
+/* ---------- Rayos ---------- */
+const bc=$("#bolt"),bx=bc.getContext("2d");
+function lightning(){bc.width=innerWidth;bc.height=innerHeight;
+  const pts=[[Math.random()*innerWidth,0]];while(pts.at(-1)[1]<innerHeight*.75){const [x,y]=pts.at(-1);pts.push([x+(Math.random()-.5)*90,y+Math.random()*50+20])}
+  const draw=(w,c)=>{bx.strokeStyle=c;bx.lineWidth=w;bx.beginPath();pts.forEach(([x,y],i)=>i?bx.lineTo(x,y):bx.moveTo(x,y));bx.stroke()};
+  bx.shadowColor="#ffb070";bx.shadowBlur=30;draw(6,"rgba(255,120,40,.5)");draw(2,"#fff");
+  $("#flash").animate([{opacity:.35},{opacity:0},{opacity:.2},{opacity:0}],{duration:420});
+  setTimeout(()=>bx.clearRect(0,0,bc.width,bc.height),160)}
+setInterval(()=>{if(Math.random()<.5)lightning()},5200);
+/* brasas que suben todo el tiempo */
+setInterval(()=>{for(let i=0;i<1;i++)parts.push({t:"ember",x:Math.random()*innerWidth,y:innerHeight+10,vx:(Math.random()-.5)*.8,vy:-(Math.random()*1.6+.8),life:1.6,s:Math.random()*3+2})},60);
+
 /* ---------- Al registrarse: FUEGO ---------- */
 async function blastOff(){
   tricksOn=false;engineSound();body.classList.remove("idle");
   hero.classList.add("shake-hard");exhaustMode="inferno";
-  await anim([{transform:"rotate(0)"},{transform:"rotate(-6deg) translateX(-20px)"}],{duration:700,easing:"ease-out"});
+  await anim([{transform:"rotate(0)"},{transform:"rotate(-28deg)"}],{duration:700,easing:"ease-out"});
   await sleep(500);
   setSpeed("fast");sl.classList.add("on");
-  await anim([{transform:"rotate(-6deg) translateX(-20px)"},{transform:"translateX(160vw) rotate(0deg)"}],{duration:900,easing:"cubic-bezier(.6,0,.9,.4)"});
+  await anim([{transform:"rotate(-28deg)"},{transform:"translateX(160vw) rotate(-10deg)"}],{duration:900,easing:"cubic-bezier(.6,0,.9,.4)"});
   hero.classList.remove("shake-hard");exhaustMode="none";
   $("#flash").animate([{opacity:.9},{opacity:0}],{duration:600});
   /* muro de fuego */
@@ -444,7 +468,7 @@ $("#form").addEventListener("submit",async e=>{
     else console.warn("Modo demo: pega la URL de Brevo en BREVO_FORM_URL");
     e.target.reset();await blastOff();
   }catch(x){err.textContent="ALGO FALLÓ. INTENTA OTRA VEZ."}
-  btn.disabled=false;btn.textContent="ARRANCAR";
+  btn.disabled=false;btn.textContent="ACELERAR";
 });
 
 /* ---------- Reveal, contadores y tarjetas ---------- */
@@ -462,17 +486,19 @@ $("#final").addEventListener("mousemove",e=>emit(e.clientX,e.clientY,"burn",2));
 
 /* ---------- SECUENCIA DE ENTRADA ---------- */
 (async function start(){
-  const pods=document.querySelectorAll(".pod");
-  for(const p of pods){await sleep(420);p.classList.add("on")}
-  await sleep(900+Math.random()*500);
-  pods.forEach(p=>p.classList.remove("on"));$("#lo").textContent="¡ARRANCA!";
+  const needle=$("#needle"),arc=$("#arc"),kmh=$("#kmh");let t0;
+  await new Promise(res=>{const st=ts=>{t0??=ts;const k=Math.min((ts-t0)/1700,1),e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2;
+    needle.style.transform=`rotate(${-120+240*e+(Math.random()-.5)*4*k}deg)`;arc.style.strokeDashoffset=560-560*e;kmh.textContent=Math.round(300*e);
+    if(k<1)requestAnimationFrame(st);else res()};requestAnimationFrame(st)});
   await sleep(250);
   $("#flash").animate([{opacity:0},{opacity:1},{opacity:0}],{duration:500});
   await sleep(200);$("#intro").classList.add("open");document.body.classList.remove("lock");
   setTimeout(()=>$("#intro").remove(),1000);
   await sleep(300);
   await enter();
-  $("#brand").animate([{opacity:0,letterSpacing:"40px"},{opacity:1,letterSpacing:"10px"}],{duration:600,fill:"forwards"});
+  $("#brand").animate([{opacity:0,transform:"scale(2.4)",filter:"blur(8px)"},{opacity:1,transform:"scale(1)",filter:"drop-shadow(0 0 14px rgba(255,77,0,.7))"}],{duration:500,easing:"cubic-bezier(.2,1.6,.4,1)",fill:"forwards"});
+  lightning();shake();await sleep(250);
+  $("#clubtag").animate([{opacity:0,letterSpacing:"30px"},{opacity:1,letterSpacing:"6px"}],{duration:600,fill:"forwards"});
   const ls=document.querySelectorAll(".title .l");
   for(const [i,l] of ls.entries()){l.classList.add("in");if(i%3===0)shake();await sleep(70)}
   await sleep(200);$("#sub").classList.add("in");await sleep(250);$("#form").classList.add("in");
